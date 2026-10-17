@@ -35,9 +35,11 @@ Install dependencies:
 npm install
 ```
 
-Copy `.env.example` to `.env.local` and set `GEMINI_API_KEY` to your private
-key. Keep the key server-side; never use a `NEXT_PUBLIC_` variable or commit
-`.env.local`.
+Copy `.env.example` to `.env.local`. Set `GEMINI_API_KEY` for live tutoring.
+Google sign-in also requires `NEXTAUTH_URL`, a strong random `NEXTAUTH_SECRET`,
+and Google OAuth client credentials (`GOOGLE_CLIENT_ID` and
+`GOOGLE_CLIENT_SECRET`). Keep all keys server-side; never use a `NEXT_PUBLIC_`
+variable or commit `.env.local`.
 
 Start the development server:
 

@@ -8,7 +8,11 @@ const nextConfig = {
   partialPrefetching: true,
   turbopack: {
     rules: {
-      "*.css": {
+      "app/globals.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
+      },
+      "app/learn/app.css": {
         loaders: ["@tailwindcss/turbopack"],
         as: "*.css",
       },

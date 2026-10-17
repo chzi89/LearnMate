@@ -12,8 +12,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Student Learning system",
-  description: "Agentic AI Student learning system",
+  title: {
+    default: "LearnMate AI | Learn step by step",
+    template: "%s | LearnMate AI",
+  },
+  description:
+    "A patient AI learning assistant for step-by-step explanations and practice.",
 };
 
 export default function RootLayout({ children }) {

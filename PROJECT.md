@@ -155,7 +155,7 @@ public/
   images/
 .env.example
 .gitignore
-AGENT.md
+AGENTS.md
 PROJECT.md
 README.md
 ```
@@ -216,5 +216,9 @@ Do not claim learning improvement without testing and evidence.
 
 ## 13. Current Status
 
-Planning document. Features should be marked complete only after
-implementation and testing in the actual repository.
+The repository contains a working UI prototype and one Gemini-backed tutor
+route, with sample tutor replies available when no API key is configured.
+The dashboard uses illustrative data; student accounts, saved progress,
+AI-generated quizzes, and AI-based answer evaluation are not implemented.
+See the README for the current route behavior and development checks. Treat
+all preview data as sample data, not as a real student's record.

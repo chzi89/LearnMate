@@ -135,7 +135,7 @@ public/
 .gitignore
 README.md
 PROJECT.md
-AGENT.md
+AGENTS.md
 ```
 
 This is a suggested structure, not a requirement to recreate an existing

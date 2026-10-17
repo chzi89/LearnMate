@@ -214,6 +214,7 @@ textarea:focus-visible {
   color: #727187;
   cursor: pointer;
   text-align: left;
+  text-decoration: none;
   transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
@@ -658,6 +659,10 @@ textarea:focus-visible {
   color: #5c5b72;
   font-size: 11px;
   line-height: 1.78;
+}
+
+.assistant-bubble {
+  font-size: 16px;
 }
 
 .message-bubble h2 {
@@ -1345,6 +1350,7 @@ kbd {
   .message-body { width: calc(100% - 34px); }
   .message-user .message-body { max-width: calc(100% - 34px); }
   .message-bubble { padding: 12px; font-size: 10px; }
+  .assistant-bubble { font-size: 15px; }
   .message-bubble h2 { font-size: 12px; }
   .composer-wrap { padding: 11px 10px 10px; }
   .prompt-suggestions { gap: 5px; }

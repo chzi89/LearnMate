@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import "./app.css";
 
@@ -64,44 +65,96 @@ const quizzesBySubject = {
     answer: "Run",
     explanation: "A verb describes an action. “Run” is an action word.",
   },
+  ComputerScience: {
+    question: "What does 'HTML' stand for?",
+    options: [
+      "HyperText Markup Language",
+      "HighText Machine Language",
+      "Hyperlink and Text Markup Language",
+      "Home Tool Markup Language",
+    ],
+    answer: "HyperText Markup Language",
+    explanation: "HTML is the standard language for creating web pages.",
+  },
 };
 
-function getTutorAnswer(prompt, explanationStyle) {
+function getTutorAnswer(prompt, explanationStyle, language) {
   const value = prompt.toLowerCase();
+  const romanUrduAnswers = {
+    photosynthesis: {
+      title: "Photosynthesis, asaan alfaaz mein",
+      text: "Patte ko ek chhoti solar kitchen samjhein. Chlorophyll dhoop ki energy leta hai, phir plant pani aur carbon dioxide se glucose banata hai. Is process mein oxygen bhi release hoti hai.",
+      takeaway: "Dhoop + pani + carbon dioxide → glucose + oxygen",
+    },
+    fractions: {
+      title: "Fractions, asaan alfaaz mein",
+      text: "Fraction kisi poori cheez ke barabar hisson mein se kuch hisson ko dikhata hai. Neeche wala number batata hai ke kul kitne hissay hain; upar wala number batata hai ke un mein se kitne hissay liye gaye hain.",
+      takeaway: "3/8 mein 8 barabar hissay hain aur un mein se 3 liye gaye hain.",
+    },
+    quiz: {
+      title: "Quick quiz ka tareeqa",
+      text: "Choices dekhne se pehle sawal ko dhyan se parhein. Pehle samjhein ke sawal kis idea ke bare mein hai, phir ghalat jawab hata kar apni wajah samjhayen.",
+      takeaway: "Pehle idea samjhein, phir apni soch ko choices se check karein.",
+    },
+  };
 
   let response;
   if (value.includes("fraction")) {
-    response = answers.fractions;
+    response =
+      language === "Roman Urdu" ? romanUrduAnswers.fractions : answers.fractions;
   } else if (value.includes("quiz") || value.includes("question")) {
-    response = answers.quiz;
+    response = language === "Roman Urdu" ? romanUrduAnswers.quiz : answers.quiz;
   } else if (
     value.includes("photo") ||
     value.includes("plant") ||
     value.includes("biology")
   ) {
-    response = answers.photosynthesis;
+    response =
+      language === "Roman Urdu"
+        ? romanUrduAnswers.photosynthesis
+        : answers.photosynthesis;
   } else {
     response = {
-      title: `Let’s explore ${prompt.length > 46 ? "that idea" : prompt}`,
-      text: `Let’s make this easier to understand. Start with the core idea: ${prompt.replace(/[?.!]+$/, "")}. Now connect that idea to something familiar, and break it into one small step at a time. What part would you like to unpack first?`,
-      takeaway: "Understand the idea first, then practise using it.",
+      title:
+        language === "Roman Urdu"
+          ? "Aaiye is topic ko samjhein"
+          : `Let’s explore ${prompt.length > 46 ? "that idea" : prompt}`,
+      text:
+        language === "Roman Urdu"
+          ? `Aaiye is sawal ko chhotay steps mein samjhte hain: ${prompt.replace(/[?.!]+$/, "")}. Pehle bunyadi idea pehchanein, phir ek misaal ke saath practice karein.`
+          : `Let’s make this easier to understand. Start with the core idea: ${prompt.replace(/[?.!]+$/, "")}. Now connect that idea to something familiar, and break it into one small step at a time. What part would you like to unpack first?`,
+      takeaway:
+        language === "Roman Urdu"
+          ? "Pehle idea samjhein, phir practice karein."
+          : "Understand the idea first, then practise using it.",
     };
   }
 
   if (explanationStyle === "Analogy") {
     return {
       ...response,
-      text: `${response.text} Try picturing it as a familiar everyday process to help the idea stick.`,
+      text:
+        language === "Roman Urdu"
+          ? `${response.text} Isay kisi rozmarra ki misaal se jor kar dekhein.`
+          : `${response.text} Try picturing it as a familiar everyday process to help the idea stick.`,
       takeaway:
-        "Make a connection between this new idea and something familiar.",
+        language === "Roman Urdu"
+          ? "Is naye idea ko kisi jani-pehchani cheez se jorein."
+          : "Make a connection between this new idea and something familiar.",
     };
   }
 
   if (explanationStyle === "Exam prep") {
     return {
       ...response,
-      text: `${response.text} For exam prep, practise defining the key term and explaining the steps in order.`,
-      takeaway: "Exam focus: define the idea, then explain the steps in order.",
+      text:
+        language === "Roman Urdu"
+          ? `${response.text} Imtihan ki tayyari ke liye aham lafz ki definition aur steps ki tartib practice karein.`
+          : `${response.text} For exam prep, practise defining the key term and explaining the steps in order.`,
+      takeaway:
+        language === "Roman Urdu"
+          ? "Imtihan focus: idea ki definition dein, phir steps samjhayen."
+          : "Exam focus: define the idea, then explain the steps in order.",
     };
   }
 
@@ -117,11 +170,12 @@ function Icon({ children, className = "" }) {
 }
 
 export default function LearnPage() {
-  const [activeSection, setActiveSection] = useState("Tutor");
   const [subject, setSubject] = useState("Biology");
   const [grade, setGrade] = useState("Grade 9");
+  const [language, setLanguage] = useState("English");
   const [style, setStyle] = useState("Guided");
   const [input, setInput] = useState("");
+  const [tutorMode, setTutorMode] = useState(null);
   const [messages, setMessages] = useState(starterMessages);
   const [typingMessageId, setTypingMessageId] = useState(null);
   const [typedCharacters, setTypedCharacters] = useState(0);
@@ -203,11 +257,7 @@ export default function LearnPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          question: `You are tutoring a ${grade} student in ${subject}.
-Explanation style: ${style}.
-Student's question: ${prompt}`,
-        }),
+        body: JSON.stringify({ question: prompt, grade, subject, style, language }),
       });
 
       const data = await response.json();
@@ -215,15 +265,33 @@ Student's question: ${prompt}`,
       if (!response.ok) {
         throw new Error(data.error || "AI se jawab nahi mila.");
       }
+      if (data.mode !== "demo" && data.mode !== "ai") {
+        throw new Error("Tutor response was not in the expected format.");
+      }
+      if (
+        data.mode === "ai" &&
+        (typeof data.answer !== "string" || !data.answer.trim())
+      ) {
+        throw new Error("Tutor response was not in the expected format.");
+      }
+
+      const tutorAnswer =
+        data.mode === "demo"
+          ? getTutorAnswer(prompt, style, language)
+          : { text: data.answer, takeaway: "" };
+      setTutorMode(data.mode);
 
       setMessages((current) => [
         ...current,
         {
           id: assistantId,
           role: "assistant",
-          title: "Let's understand it together",
-          text: data.answer,
-          takeaway: "",
+          title:
+            data.mode === "demo"
+              ? "Demo tutor response"
+              : "Let's understand it together",
+          text: tutorAnswer.text,
+          takeaway: tutorAnswer.takeaway,
         },
       ]);
 
@@ -315,6 +383,7 @@ Student's question: ${prompt}`,
   function resetChat() {
     window.speechSynthesis?.cancel();
     setMessages(starterMessages);
+    setTutorMode(null);
     setTypingMessageId(null);
     setTypedCharacters(0);
     setQuizAnswer("");
@@ -333,19 +402,19 @@ Student's question: ${prompt}`,
   return (
     <main className="tutor-app">
       <aside className="tutor-sidebar">
-        <a className="brand" href="/dashboard" aria-label="LearnMate home">
+        <Link className="brand" href="/dashboard" aria-label="LearnMate home">
           <span className="brand-mark">
             <Icon>✦</Icon>
           </span>
           <span>
             learnmate<span className="brand-ai">.ai</span>
           </span>
-        </a>
+        </Link>
 
         <div className="student-card">
-          <div className="student-avatar">A</div>
+          <div className="student-avatar">D</div>
           <div className="student-info">
-            <strong>Alex Morgan</strong>
+            <strong>Demo learner</strong>
             <span>{grade} learner</span>
           </div>
           <button
@@ -360,27 +429,21 @@ Student's question: ${prompt}`,
         <p className="sidebar-label">YOUR WORKSPACE</p>
         <nav className="side-nav" aria-label="Main navigation">
           {[
-            ["Tutor", "✧"],
-            ["My learning", "▤"],
-            ["Practice", "◉"],
-            ["Progress", "↗"],
-          ].map(([label, icon]) => (
-            <button
+            ["Tutor", "✧", "/learn"],
+            ["My learning", "▤", "/dashboard"],
+            ["Practice", "◉", "/quiz"],
+            ["Progress", "↗", "/progress"],
+          ].map(([label, icon, href]) => (
+            <Link
               key={label}
-              className={`nav-item ${activeSection === label ? "nav-item-active" : ""}`}
-              type="button"
-              onClick={() => {
-                setActiveSection(label);
-                if (label !== "Tutor")
-                  setNotice(
-                    `${label} is part of your learning space. Keep exploring here with your tutor.`,
-                  );
-              }}
+              href={href}
+              aria-current={label === "Tutor" ? "page" : undefined}
+              className={`nav-item ${label === "Tutor" ? "nav-item-active" : ""}`}
             >
               <Icon>{icon}</Icon>
               <span>{label}</span>
               {label === "Practice" && <span className="nav-badge">1</span>}
-            </button>
+            </Link>
           ))}
         </nav>
 
@@ -388,8 +451,8 @@ Student's question: ${prompt}`,
           <div className="streak-card">
             <span className="streak-icon">✦</span>
             <div>
-              <strong>6 day streak</strong>
-              <span>You’re on a roll!</span>
+              <strong>Keep learning</strong>
+              <span>One step at a time</span>
             </div>
             <span className="streak-spark">✦</span>
           </div>
@@ -409,7 +472,12 @@ Student's question: ${prompt}`,
           </div>
           <div className="topbar-actions">
             <span className="demo-status">
-              <i /> Interactive demo
+              <i />{" "}
+              {tutorMode === "demo"
+                ? "Demo mode · sample replies"
+                : tutorMode === "ai"
+                  ? "AI tutor · session only"
+                  : "Tutor ready"}
             </span>
             <button
               className="icon-button topbar-profile"
@@ -445,6 +513,7 @@ Student's question: ${prompt}`,
                   <option>Mathematics</option>
                   <option>Physics</option>
                   <option>English</option>
+                  <option value="ComputerScience">Computer Science</option>
                 </select>
                 <span className="select-caret">⌄</span>
               </label>
@@ -462,6 +531,18 @@ Student's question: ${prompt}`,
                   <option>Grade 10</option>
                   <option>Grade 11</option>
                   <option>Grade 12</option>
+                </select>
+                <span className="select-caret">⌄</span>
+              </label>
+              <label className="select-pill">
+                <Icon>文</Icon>
+                <select
+                  value={language}
+                  onChange={(event) => setLanguage(event.target.value)}
+                  aria-label="Choose explanation language"
+                >
+                  <option>English</option>
+                  <option>Roman Urdu</option>
                 </select>
                 <span className="select-caret">⌄</span>
               </label>
@@ -638,6 +719,7 @@ Student's question: ${prompt}`,
                     placeholder="Ask anything you’re learning about..."
                     rows={1}
                     aria-label="Ask your tutor a question"
+                    maxLength={2000}
                     disabled={Boolean(typingMessageId)}
                   />
                   <div className="composer-footer">

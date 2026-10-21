@@ -18,7 +18,7 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = async (e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");

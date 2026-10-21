@@ -25,6 +25,12 @@ export default function LoginPage() {
         body: JSON.stringify(formData),
       });
 
+      // Check if response is actually JSON
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Server error: Received non-JSON response. Please check if MongoDB is running.");
+      }
+
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Login failed");
 

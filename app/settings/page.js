@@ -1,29 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { storage } from "@/lib/storage";
 
 export default function SettingsPage() {
-  const [profile, setProfile] = useState({
-    name: "",
-    grade: "Grade 9",
-    subject: "Biology",
-    language: "English",
-  });
-
-  useEffect(() => {
-    const savedProfile = storage.getProfile();
-    setProfile((prev) => ({
-      ...prev,
-      name: savedProfile.name || "",
-      grade: savedProfile.grade || "Grade 9",
-    }));
-  }, []);
+  const profileSnapshot = useSyncExternalStore(
+    storage.subscribeToProfile,
+    storage.getProfileSnapshot,
+    () => null,
+  );
+  const savedProfile = useMemo(
+    () => (profileSnapshot ? JSON.parse(profileSnapshot) : {}),
+    [profileSnapshot],
+  );
+  const [draft, setDraft] = useState(null);
+  const profile = draft || {
+    name: savedProfile.name || "",
+    grade: savedProfile.grade || "Grade 9",
+    subject: savedProfile.subject || "Biology",
+    language: savedProfile.language || "English",
+  };
 
   const handleSave = () => {
     storage.saveProfile(profile);
-    alert("Settings saved successfully!");
+    setDraft(null);
   };
 
   return (
@@ -46,7 +47,9 @@ export default function SettingsPage() {
               <input
                 type="text"
                 value={profile.name}
-                onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+                onChange={(e) =>
+                  setDraft({ ...profile, name: e.target.value })
+                }
                 className="w-full rounded-xl border border-slate-300 px-4 py-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all"
                 placeholder="Enter your name"
               />
@@ -56,7 +59,9 @@ export default function SettingsPage() {
               <label className="block text-sm font-medium text-slate-700 mb-2">Default Grade</label>
               <select
                 value={profile.grade}
-                onChange={(e) => setProfile({ ...profile, grade: e.target.value })}
+                onChange={(e) =>
+                  setDraft({ ...profile, grade: e.target.value })
+                }
                 className="w-full rounded-xl border border-slate-300 px-4 py-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition-all"
               >
                 <option>Grade 6</option>

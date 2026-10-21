@@ -1,18 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { storage } from "@/lib/storage";
 
 export default function ProgressPage() {
-  const [progress, setProgress] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const data = storage.getAllProgress();
-    setProgress(data);
-    setIsLoading(false);
-  }, []);
+  const progressSnapshot = useSyncExternalStore(
+    storage.subscribeToProgress,
+    storage.getProgressSnapshot,
+    () => null,
+  );
+  const progress = useMemo(
+    () => (progressSnapshot ? JSON.parse(progressSnapshot) : {}),
+    [progressSnapshot],
+  );
+  const isLoading = progressSnapshot === null;
 
   const topics = Object.entries(progress);
 

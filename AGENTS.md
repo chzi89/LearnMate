@@ -1,188 +1,189 @@
-# AGENT.md --- LearnMate AI
+# Master UI/UX Redesign Prompt — Punjab Public High School
 
-## Project Identity
+Act as a world-class web designer, senior Next.js developer, and educational brand designer.
 
-**Project:** LearnMate AI\
-**Purpose:** Build a safe, helpful, AI-powered learning assistant for
-students across school grades and learning levels.\
-**Primary stack:** Next.js App Router, JavaScript, React, CSS/Tailwind
-(if already configured), and an AI model API.
+Redesign and implement the complete Punjab Public High School website. The result should feel like a premium, modern school website built by a professional agency—not a generic template.
 
-## Instructions for the Coding Agent
+## Project Context
 
-### 1. Work in JavaScript
+- School: Punjab Public High School
+- Education: Playgroup to Class 10 (Matric)
+- Framework: Next.js App Router
+- Language: JavaScript and JSX only
+- Styling: Use the existing styling system where practical.
+- Audience: Parents, students, teachers, and prospective families in Pakistan.
+- Main goals: Establish trust, communicate educational offerings, highlight staff and verified achievements, and make admission enquiries simple.
 
--   Use JavaScript files such as `.js` and `.jsx`.
--   Do **not** use TypeScript, `.ts`, or `.tsx`.
--   Use the Next.js App Router and the `app/` directory unless the
-    existing repository uses a different structure.
--   Keep examples beginner-friendly and explain important changes
-    briefly.
+Read `project.md` and `AGENT.md` before making changes. Inspect the existing project before writing code.
 
-### 2. Product Goal
+## Creative Direction
 
-Create a learning assistant that adapts to different students. The
-student should be able to choose: - Grade/class or learning level -
-Subject - Topic - Preferred explanation language (English or Roman Urdu
-initially) - Learning goal or difficulty level
+Create a distinctive, polished educational identity.
 
-The agent should explain topics, generate practice questions, evaluate
-answers, identify weak areas, and recommend a sensible next learning
-step.
+### Visual Style
 
-### 3. Core MVP Features
+Use a deep navy, royal blue, white, and restrained gold palette. The website should feel confident, welcoming, clean, academic, and trustworthy.
 
-Build in this order: 1. Responsive landing page and student learning
-form. 2. AI tutor that explains a selected topic at the student's level.
-3. Quiz generator with clear questions and answer options. 4. Answer
-evaluation with explanations, not just a score. 5. Progress summary and
-weak-topic recommendations. 6. Loading, empty, error, and retry states.
-7. A small demo mode with sample content when no AI API key is
-configured.
+Build a consistent visual system featuring:
 
-Do not attempt every advanced feature before the core flow works.
+- Strong but readable typography.
+- Spacious section layouts.
+- Refined page introductions.
+- Carefully composed photographic sections.
+- Modern, responsive cards.
+- Consistent buttons and form fields.
+- Subtle shadows and elegant borders.
+- Smooth transitions and restrained motion.
+- Clear hierarchy between headings, descriptions, and actions.
 
-### 4. Learning Levels and Accuracy
+Use real school imagery when available. If photos are missing, use tasteful placeholders or initials-based avatars. Never fabricate real staff or student photographs.
 
--   Support a broad range of grades, but tailor explanations to the
-    selected grade and subject.
--   Do not assume that every country's grade names or curriculum are
-    identical.
--   Ask for country/curriculum when curriculum-specific alignment is
-    requested.
--   When source material is supplied, prefer that material and state
-    when an answer is not covered by it.
--   Never invent official curriculum alignment, citations, or textbook
-    references.
--   Use age-appropriate, respectful language.
--   Encourage understanding and practice rather than helping students
-    cheat on live exams.
--   If confidence is low or the question is ambiguous, ask a clarifying
-    question or say what is uncertain.
+## Make Every Page Interactive
 
-### 5. AI and Agent Behaviour
+### Home Page
 
--   Use clear system instructions and structured outputs where
-    supported.
--   Validate AI output on the server before returning it to the browser.
--   Treat model output and user-uploaded content as untrusted data;
-    never execute it as code.
--   The agent may recommend the next action (re-explain, give easier
-    practice, give harder practice, or move on), but the application
-    must validate scores and permitted actions.
--   Do not claim that the agent has saved progress unless persistence
-    has actually succeeded.
+Create a visually engaging hero with the heading:
 
-### 6. Security and Privacy
+**“From First Steps to Matric Success”**
 
--   Keep API keys in server-side environment variables such as
-    `AI_API_KEY`.
--   Never expose secrets through `NEXT_PUBLIC_*` variables, client
-    components, logs, or committed files.
--   Add `.env.local` to `.gitignore`; provide `.env.example` with
-    placeholder values only.
--   Validate inputs, limit request size, and add rate limiting before
-    public deployment.
--   Collect only the student information needed for learning. Avoid
-    collecting full names, addresses, school IDs, or other unnecessary
-    personal data.
--   If the product is used by children, apply appropriate privacy,
-    parental-consent, and safeguarding requirements before real-world
-    launch.
--   Do not store conversation or student progress unless the user has
-    been informed and the storage has been implemented securely.
+Supporting text should explain that the school provides education from Playgroup through Class 10.
 
-### 7. Code Quality
+Include:
 
--   Prefer small, reusable components and clear names.
--   Keep AI API calls in server-side route handlers, not directly in
-    browser code.
--   Handle missing API keys, timeouts, malformed AI responses, and
-    provider errors gracefully.
--   Do not add packages unless needed; explain why a new dependency is
-    required.
--   Preserve existing working code and inspect the repository before
-    making structural changes.
--   Do not replace project configuration files without checking their
-    current contents.
+- Clear admission-enquiry and explore-school actions.
+- Academic stage cards.
+- School introduction.
+- Why Choose Us section.
+- Leadership/staff preview.
+- Student achievements preview.
+- Gallery preview.
+- Final admission-enquiry CTA.
 
-### 8. Suggested App Router Structure
+Use a balanced composition with real photography if available, a strong heading, and a clear path to the next action.
 
-``` text
-app/
-  layout.js
-  page.js
-  learn/
-    page.js
-  api/
-    tutor/
-      route.js
-    quiz/
-      route.js
-components/
-  Header.js
-  LearningForm.js
-  TutorResponse.js
-  QuizCard.js
-  ProgressSummary.js
-lib/
-  ai.js
-  prompts.js
-  validation.js
-public/
-  images/
-.env.example
-.gitignore
-README.md
-PROJECT.md
-AGENTS.md
-```
+### About Page
 
-This is a suggested structure, not a requirement to recreate an existing
-repository unnecessarily.
+Create a polished introduction, school mission and values, leadership profiles, teaching staff cards, and Class 9 achievement section.
 
-### 9. Definition of Done
+Leadership:
 
-A feature is complete when: - It works on mobile and desktop. - It has
-loading and error states. - Inputs and AI output are validated. -
-Secrets remain server-side. - The main user flow has been tested. - The
-README documents setup and required environment variables. - The
-implementation uses JavaScript, not TypeScript.
+- Abdul Qadeer — Director, M.Sc. Chemistry.
+- Shabir — Sub-Director, M.Sc. Botany.
+- Nasir — Principal, English Teacher.
 
-### 10. Development Workflow
+Teaching staff:
 
-Before coding: 1. Inspect the existing repository and package scripts.
-2. Summarize the plan in a few bullets. 3. Implement one small milestone
-at a time. 4. Run the available lint/build checks. 5. Report what
-changed, what was tested, and any remaining limitations.
+- Ajiba Rasool — designation pending confirmation.
+- Shabir Ahmed — Urdu Teacher.
+- Habib ur Rehman — Pakistan Studies Teacher.
+- Mufti Umer — Islamic Studies / Tarjuma Teacher.
+- Mufti Abdul Hameed — Islamic Studies / Tarjuma Teacher.
+- Ansar Shehzad — Computer Teacher, M.S. IT.
 
-<!-- BEGIN:nextjs-agent-rules -->
+Class 9 achievement draft:
 
-## This is NOT the Next.js you know
+- 1st — Zain ul Abedain.
+- 2nd — Subhan Irfan.
+- 3rd — Farhan.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+Make profile cards visually consistent and responsive. Use tasteful hover interactions and optional accessible detail links if meaningful. Do not add fake biographies, qualifications, or photographs.
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+### Academics Page
 
-<!-- END:nextjs-agent-rules -->
+Present four clear stages:
 
-<!-- BEGIN:nextjs-agent-feedback -->
+- Early Years: Playgroup, Nursery, Kindergarten.
+- Primary: Classes 1–5.
+- Middle: Classes 6–8.
+- Secondary: Classes 9–10.
 
-## Report Next.js feedback
+Use visually distinct cards and concise descriptions of educational progression. Do not claim unsupported curriculum details or facilities.
 
-The project owner enabled `experimental.agentFeedback`, authorizing this feedback pass. When enabled, `next dev` writes this block and restores it if removed. Commit `AGENTS.md` with your work to keep the tree clean.
+### Admissions Page
 
-During the current user request, retain anonymized facts as feedback candidates for meaningful or recurring Next.js issues:
+Build an accessible, polished enquiry experience.
 
-- Crashes, hangs, OOMs, or unexpected slowness
-- Incorrect behavior, output, errors, or diagnostics
-- Missing, unclear, or conflicting documentation
-- Unexpected CLI, codemod, Skill, or upgrade behavior and non-obvious workarounds
+Include:
 
-Continue the current user request without reporting immediately. Ignore routine debugging and unverified changes. Never retain code, logs, paths, URLs, secrets, personal information, or project-specific data.
+- Admission information for Playgroup through Class 10.
+- Parent/guardian name.
+- Contact number.
+- Desired class.
+- Optional message.
+- Field validation.
+- Clear error, loading, and success states.
 
-Keep a qualifying candidate through the reporting pass even if you resolve or work around it. A successful fix changes the report outcome; it does not erase the friction that qualified it.
+Only claim that an enquiry was sent when it was actually processed. If no backend exists, provide a clearly identified demo state or prepare the form for backend integration.
 
-Before the final response, run one reporting pass. If candidates remain, from this file's directory run `node node_modules/next/dist/bin/next internal agent-feedback-instructions` once without piping or truncating its output. Follow its output or error guidance. If a network sandbox blocks it, retry with network access; if it still returns no output, continue normally.
+### Results Page
 
-<!-- END:nextjs-agent-feedback -->
+Present verified academic achievements with clear visual hierarchy. Highlight the supplied Class 9 position holders without inventing marks, percentages, examination year, official board ranks, or certificates.
+
+### Gallery Page
+
+Build a responsive photo grid with optional category filtering and an accessible image preview. Use genuine school photos only. Ensure the page still looks intentional when images are unavailable.
+
+### Contact Page
+
+Display only verified contact details. Add accessible enquiry forms, useful contact links, and a map only when a confirmed location is available.
+
+## Functional Requirements
+
+- Responsive desktop navigation and accessible mobile menu.
+- Consistent header and footer across pages.
+- Working internal links and buttons.
+- Subtle scroll-reveal animations.
+- Respect `prefers-reduced-motion`.
+- Interactive cards only when interaction adds value.
+- Accessible gallery preview.
+- Keyboard navigation and focus states.
+- Form validation and feedback.
+- No fake counters, fake testimonials, or decorative controls that do nothing.
+
+## Technical Requirements
+
+- Use Next.js App Router, JavaScript, and JSX only.
+- Reuse the existing project architecture.
+- Keep components modular and reusable.
+- Store repeated staff, academic, and achievement content in JavaScript data files.
+- Prefer server components unless interactivity requires a client component.
+- Use `"use client"` only when needed.
+- Avoid unnecessary dependencies.
+- Avoid hydration errors and layout shifts.
+- Add page-specific metadata and appropriate SEO descriptions.
+- Optimize image sizes and loading.
+- Preserve working application functionality.
+
+## Responsive Quality
+
+Test mobile, tablet, laptop, and large desktop layouts. Prevent horizontal scrolling, oversized mobile headings, clipped cards, inaccessible menus, and tiny touch targets.
+
+## Content Accuracy
+
+Never invent:
+
+- School address or phone number.
+- Admission dates or fees.
+- School history.
+- Staff qualifications.
+- School facilities.
+- Awards or board results.
+- Student marks or exam years.
+- Testimonials or statistics.
+
+Keep unverified details editable and flag them for review.
+
+## Execution Plan
+
+1. Inspect the current project and its dependencies.
+2. Review `project.md` and `AGENT.md`.
+3. Create a consistent design system.
+4. Implement or improve all required pages.
+5. Build reusable UI components.
+6. Add real interactions and form validation.
+7. Review accessibility, responsive layouts, SEO, and performance.
+8. Run lint and production build using the available project scripts.
+9. Fix errors caused by the changes.
+10. Report what was implemented, which files changed, how to test the website, and which school details still need confirmation.
+
+Do not stop after creating a homepage mockup. Implement a coherent website across all required pages, keeping the existing project stable and maintainable.

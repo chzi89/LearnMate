@@ -7,12 +7,21 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Punjab Public High School Brand Palette */
+  --pphs-navy: #0a192f;
+  --pphs-royal: #112240;
+  --pphs-gold: #d4af37;
+  --pphs-amber: #f59e0b;
+  --pphs-slate: #f8fafc;
 }
+
 @layer base {
   html,
   body {
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
   }
   body {
     overscroll-behavior: none;
@@ -24,6 +33,7 @@
     margin-bottom: 0 !important;
   }
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -38,3 +48,15 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+
+/* 
+  Since @theme is causing a PostCSS parse error in this environment, 
+  we revert to standard CSS variables and custom utility classes.
+  These will be used by components via standard Tailwind square-bracket 
+  notation (e.g., bg-[var(--pphs-navy)]) or these custom classes.
+*/
+.text-pphs-navy { color: var(--pphs-navy); }
+.bg-pphs-navy { background-color: var(--pphs-navy); }
+.text-pphs-gold { color: var(--pphs-gold); }
+.bg-pphs-gold { background-color: var(--pphs-gold); }
+.border-pphs-gold { border-color: var(--pphs-gold); }

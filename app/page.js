@@ -1,230 +1,171 @@
+"use client";
+
+import React from "react";
 import Link from "next/link";
 import AcademicLevels from "@/components/AcademicLevels";
-import "./home.css";
 
-const steps = [
-// ... existing steps content ...
-
+const features = [
   {
-    number: "01",
-    title: "Choose what you are learning",
+    title: "Quality Education",
     description:
-      "Pick a subject and grade, then ask about the idea you want to understand.",
+      "A rigorous academic curriculum aligned with board standards to ensure student success.",
+    icon: "⭐",
   },
   {
-    number: "02",
-    title: "Learn it step by step",
+    title: "Character Building",
     description:
-      "Get a patient explanation in English or Roman Urdu, with a style that suits you.",
+      "Instilling discipline, integrity, and Islamic values in every student we teach.",
+    icon: "🛡️",
   },
   {
-    number: "03",
-    title: "Try a practice question",
+    title: "Expert Faculty",
     description:
-      "Check your understanding with a short sample quiz in the tutor workspace.",
+      "Dedicated teachers with advanced degrees and a passion for pedagogical excellence.",
+    icon: "👨‍🏫",
+  },
+  {
+    title: "Modern Facilities",
+    description:
+      "Providing a safe, clean, and resource-rich environment for optimal learning.",
+    icon: "🏫",
   },
 ];
 
 export default function Home() {
   return (
-    <main className="home-page">
-      <header className="home-header">
-        <Link className="home-brand" href="/" aria-label="LearnMate AI home">
-          <span className="home-brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none">
-              <path
-                d="M16 3.5 18.9 13l9.6 3-9.6 2.9-2.9 9.6-3-9.6-9.5-2.9 9.5-3L16 3.5Z"
-                fill="currentColor"
-              />
-              <circle cx="25.5" cy="7" r="2" fill="currentColor" />
-            </svg>
-          </span>
-          <span className="home-brand-name">
-            LearnMate<span>AI</span>
-          </span>
-        </Link>
+    <main className="min-h-screen bg-white">
+      {/* Hero Section */}
 
-        <nav className="home-nav" aria-label="Main navigation">
-          <Link className="home-nav-preview" href="/dashboard">
-            Preview dashboard
-          </Link>
-          <Link className="home-button home-button-small" href="/learn">
-            Open tutor <span aria-hidden="true">↗</span>
-          </Link>
-        </nav>
-      </header>
-
-      <section className="home-hero" aria-labelledby="home-title">
-        <div className="home-hero-grid">
-          <div className="home-hero-copy">
-            <p className="home-eyebrow">
-              <span className="home-eyebrow-dot" aria-hidden="true" />
-              A patient AI tutor for curious minds
-            </p>
-            <h1 id="home-title">
-              Understand it,
-              <br />
-              then <span>make it stick.</span>
-            </h1>
-            <p className="home-intro">
-              Punjab Public High School provides a premium educational journey from 
-              <span className="text-blue-900 font-semibold"> Playgroup to Matric</span>. 
-              Ask a question, choose your learning level, and work through ideas
-              with a patient tutor. Practise at your own pace in English or
-              Roman Urdu.
-            </p>
-
-
-            <div className="home-hero-actions">
-              <Link className="home-button" href="/learn">
-                Start learning <span aria-hidden="true">→</span>
-              </Link>
-              <Link className="home-button home-button-secondary" href="/dashboard">
-                Explore the preview
-              </Link>
-            </div>
-
-            <div className="home-assurance">
-              <span className="home-assurance-icon" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="m5 10.2 3.1 3.1L15.5 6"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-              <p>
-                No account needed <span aria-hidden="true">·</span> Your
-                progress is not saved in this preview
-              </p>
-              <p className="home-api-note">
-                Sample replies work without a key. Add a Gemini API key for
-                live AI tutoring.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className="home-visual"
-            role="img"
-            aria-label="Example tutor conversation for a Grade 6 mathematics question"
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-pphs-navy text-white">
+        <div className="absolute inset-0 opacity-20">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
           >
-            <div className="home-visual-orbit home-visual-orbit-one" />
-            <div className="home-visual-orbit home-visual-orbit-two" />
-            <div className="home-preview-card">
-              <div className="home-preview-topbar">
-                <div className="home-preview-brand">
-                  <span className="home-preview-mark" aria-hidden="true">✦</span>
-                  <span>LEARNMATE</span>
-                </div>
-                <span className="home-example-label">EXAMPLE</span>
-              </div>
-              <div className="home-preview-context">
-                <span className="home-subject-icon" aria-hidden="true">∑</span>
-                <span>MATHEMATICS</span>
-                <span className="home-context-divider" aria-hidden="true" />
-                <span>GRADE 6</span>
-              </div>
-              <div className="home-question">
-                <span className="home-message-label">YOUR QUESTION</span>
-                <p>Why is 1/4 smaller than 1/2?</p>
-              </div>
-              <div className="home-tutor-response">
-                <div className="home-tutor-heading">
-                  <span className="home-tutor-avatar" aria-hidden="true">✦</span>
-                  <span>YOUR TUTOR</span>
-                  <span className="home-guided-label">GUIDED</span>
-                </div>
-                <p>
-                  Imagine two same-size pizzas. If one is cut into 2 equal
-                  pieces, each piece is bigger than when it is cut into 4.
-                </p>
-                <div className="home-response-note">
-                  <span aria-hidden="true">✧</span>
-                  More equal pieces means each piece is smaller.
-                </div>
-              </div>
-              <div className="home-preview-footer">
-                <span><i aria-hidden="true" /> Step-by-step explanation</span>
-                <span>English</span>
+            <path d="M0 100 L100 0 L100 100 Z" fill="currentColor" />
+          </svg>
+        </div>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="text-center lg:text-left">
+            <p className="text-amber-400 font-semibold tracking-widest uppercase text-sm mb-4">
+              Welcome to Punjab Public High School
+            </p>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              From First Steps <br />
+              <span className="text-pphs-gold">to Matric Success</span>
+            </h1>
+            <p className="text-blue-100 text-lg md:text-xl leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
+              Providing a strong educational foundation from Playgroup to Class
+              10, helping students grow in knowledge, character, and confidence.
+            </p>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+              <Link
+                href="/learn"
+                className="bg-pphs-gold text-pphs-navy font-bold px-10 py-4 rounded-full hover:bg-white transition-all shadow-lg focus:ring-4 focus:ring-amber-300 outline-none"
+              >
+                Learning
+              </Link>
+              <Link
+                href="/about"
+                className="bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-pphs-navy transition-all focus:ring-4 focus:ring-blue-400 outline-none"
+              >
+                Explore School
+              </Link>
+            </div>
+          </div>
+          <div className="hidden lg:block relative">
+            <div className="w-full aspect-square bg-blue-800/30 rounded-3xl border-2 border-pphs-gold/30 flex items-center justify-center relative">
+              <span className="text-9xl opacity-20">🎓</span>
+              <div className="absolute -top-6 -right-6 bg-white text-pphs-navy p-6 rounded-2xl shadow-xl">
+                <p className="font-bold text-2xl">Playgroup</p>
+                <p className="text-sm text-slate-500">to</p>
+                <p className="font-bold text-2xl">Class 10</p>
               </div>
             </div>
-            <div className="home-floating-note">
-              <span className="home-note-icon" aria-hidden="true">✓</span>
-              <span><strong>Learn at your pace</strong><small>One idea at a time</small></span>
-            </div>
-            <span className="home-visual-caption">A little clarity goes a long way.</span>
           </div>
         </div>
       </section>
 
-      <AcademicLevels />
-
-      <section className="home-method" aria-labelledby="home-method-title">
-
-        <div className="home-section-heading">
-          <p className="home-section-kicker">A SIMPLE LEARNING LOOP</p>
-          <h2 id="home-method-title">Small steps. <span>Real understanding.</span></h2>
-          <p>
-            Build confidence by exploring a topic, making sense of it, and
-            trying it for yourself.
+      {/* Academic Stages Section */}
+      <section className="py-20 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-pphs-navy mb-4">
+            Our Educational Pathway
+          </h2>
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+            A structured progression designed to nurture growth at every stage
+            of a child's development.
           </p>
         </div>
-        <div className="home-step-grid">
-          {steps.map((step) => (
-            <article className="home-step-card" key={step.number}>
-              <span className="home-step-number">{step.number}</span>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-              <span className="home-step-rule" aria-hidden="true" />
-            </article>
-          ))}
-        </div>
+        <AcademicLevels />
       </section>
 
-      <section className="home-cta" aria-labelledby="home-cta-title">
-        <div className="home-cta-decoration" aria-hidden="true">✦</div>
-        <div>
-          <p className="home-section-kicker">YOUR NEXT QUESTION STARTS HERE</p>
-          <h2 id="home-cta-title">Curiosity looks good on you.</h2>
-          <p>Bring a topic you have been wondering about. We will take it one step at a time.</p>
-        </div>
-        <Link className="home-button home-button-light" href="/learn">
-          Meet your tutor <span aria-hidden="true">→</span>
-        </Link>
-      </section>
-
-      <footer className="home-footer">
-        <div className="home-footer-main">
-          <Link className="home-brand home-footer-brand" href="/" aria-label="LearnMate AI home">
-            <span className="home-brand-mark" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none">
-                <path
-                  d="M16 3.5 18.9 13l9.6 3-9.6 2.9-2.9 9.6-3-9.6-9.5-2.9 9.5-3L16 3.5Z"
-                  fill="currentColor"
+      {/* Why Choose Us Section */}
+      <section className="py-20 px-6 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="text-center lg:text-left">
+              <h2 className="text-3xl md:text-5xl font-bold text-pphs-navy mb-6 leading-tight">
+                Why Punjab Public <br />
+                <span className="text-amber-600">High School?</span>
+              </h2>
+              <p className="text-slate-600 text-lg leading-relaxed mb-8 mx-auto lg:mx-0">
+                We combine academic rigor with a supportive environment,
+                ensuring that every student receives the attention they need to
+                thrive. Our focus extends beyond textbooks to cultivate
+                leadership and ethics.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+                {features.map((f, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <span className="text-2xl">{f.icon}</span>
+                    <div>
+                      <h4 className="font-bold text-pphs-navy">{f.title}</h4>
+                      <p className="text-sm text-slate-500">{f.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="aspect-square bg-slate-200 rounded-3xl overflow-hidden">
+                <img
+                  src="/api/placeholder/400/400"
+                  alt="School Life"
+                  className="w-full h-full object-cover"
                 />
-                <circle cx="25.5" cy="7" r="2" fill="currentColor" />
-              </svg>
-            </span>
-            <span className="home-brand-name">LearnMate<span>AI</span></span>
-          </Link>
-          <p className="home-disclaimer">
-            AI explanations can be incorrect. Use them to support your learning,
-            and check important answers with trusted learning materials.
+              </div>
+              <div className="aspect-square bg-slate-200 rounded-3xl overflow-hidden translate-y-8">
+                <img
+                  src="/api/placeholder/400/400"
+                  alt="Student Success"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Footer Section */}
+      <section className="py-20 px-6 text-center bg-pphs-navy text-white">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            Start Your Journey Today
+          </h2>
+          <p className="text-blue-100 text-lg mb-10">
+            Join a community dedicated to academic excellence and noble
+            character.
           </p>
-          <nav className="home-footer-links" aria-label="Footer navigation">
-            <Link href="/learn">Tutor</Link>
-            <Link href="/dashboard">Dashboard preview</Link>
-          </nav>
+          <Link
+            href="/admissions"
+            className="bg-pphs-gold text-pphs-navy font-bold px-10 py-4 rounded-full hover:bg-white transition-all shadow-lg inline-block"
+          >
+            Enquire About Admissions
+          </Link>
         </div>
-        <div className="home-footer-bottom">
-          <span>LearnMate AI</span>
-          <span>Made for learning, one question at a time.</span>
-        </div>
-      </footer>
+      </section>
     </main>
   );
 }

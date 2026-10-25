@@ -22,8 +22,7 @@ what to practise next.
 ## 3. Proposed Solution
 
 LearnMate AI asks for a student's grade, subject, topic, language, and
-learning goal. It then: 1. Explains the topic at an appropriate level.
-2. Creates practice questions. 3. Evaluates submitted answers and
+learning goal. It then: 1. Explains the topic at an appropriate level. 2. Creates practice questions. 3. Evaluates submitted answers and
 explains mistakes. 4. Summarizes strengths and weak areas. 5. Recommends
 a next step based on the student's performance.
 
@@ -45,25 +44,25 @@ a next step based on the student's performance.
 
 ### Included
 
--   Responsive homepage and learning workspace.
--   Grade/level, subject, topic, and language selection.
--   AI topic explanation.
--   Quiz generation.
--   Answer checking and feedback.
--   Basic session summary and next-step recommendation.
--   Demo/fallback mode when no API key is configured.
--   Helpful loading, empty, and error states.
+- Responsive homepage and learning workspace.
+- Grade/level, subject, topic, and language selection.
+- AI topic explanation.
+- Quiz generation.
+- Answer checking and feedback.
+- Basic session summary and next-step recommendation.
+- Demo/fallback mode when no API key is configured.
+- Helpful loading, empty, and error states.
 
 ### Not included in the first version
 
--   Payments or subscriptions.
--   Public student profiles or social features.
--   High-stakes grading or official examination certification.
--   Claims of complete curriculum coverage.
--   Complex school administration, teacher dashboards, or parent
-    portals.
--   Persistent student accounts until authentication and privacy
-    requirements are planned.
+- Payments or subscriptions.
+- Public student profiles or social features.
+- High-stakes grading or official examination certification.
+- Claims of complete curriculum coverage.
+- Complex school administration, teacher dashboards, or parent
+  portals.
+- Persistent student accounts until authentication and privacy
+  requirements are planned.
 
 ## 6. AI Agent Behaviour
 
@@ -84,17 +83,17 @@ treated as infallible.
 
 ## 7. Recommended Technology
 
--   **Frontend:** Next.js App Router with JavaScript and React.
--   **Styling:** Use the repository's existing styling system; Tailwind
-    CSS is optional.
--   **AI:** A server-side AI model API, selected after checking pricing,
-    regional availability, and terms.
--   **Backend:** Next.js Route Handlers under `app/api/`.
--   **Persistence:** Start without a database or use a small, clearly
-    documented demo session. Add a database only when progress storage
-    is required.
--   **Deployment:** Any compatible host that supports the chosen Next.js
-    features and environment variables.
+- **Frontend:** Next.js App Router with JavaScript and React.
+- **Styling:** Use the repository's existing styling system; Tailwind
+  CSS is optional.
+- **AI:** A server-side AI model API, selected after checking pricing,
+  regional availability, and terms.
+- **Backend:** Next.js Route Handlers under `app/api/`.
+- **Persistence:** Start without a database or use a small, clearly
+  documented demo session. Add a database only when progress storage
+  is required.
+- **Deployment:** Any compatible host that supports the chosen Next.js
+  features and environment variables.
 
 Do not commit API keys or other secrets to Git.
 
@@ -102,7 +101,7 @@ Do not commit API keys or other secrets to Git.
 
 The server can request a structured response similar to this:
 
-``` json
+```json
 {
   "topic": "Fractions",
   "level": "Grade 5",
@@ -130,7 +129,7 @@ answer keys before the student submits the quiz.
 
 ## 9. Suggested Project Structure
 
-``` text
+```text
 app/
   layout.js
   page.js
@@ -202,17 +201,17 @@ Do not claim learning improvement without testing and evidence.
 
 ## 12. Risks and Safeguards
 
--   **Incorrect explanations:** test examples, validate structured
-    output, and allow feedback.
--   **Curriculum mismatch:** ask for country/curriculum when necessary
-    and use approved material where possible.
--   **Children's privacy:** minimize collected data and review
-    applicable requirements before launch.
--   **API costs or abuse:** set usage limits and rate limits.
--   **Prompt injection:** treat uploaded text and model output as
-    untrusted; never execute generated code.
--   **Over-reliance on AI:** encourage students to reason and practise,
-    not simply copy answers.
+- **Incorrect explanations:** test examples, validate structured
+  output, and allow feedback.
+- **Curriculum mismatch:** ask for country/curriculum when necessary
+  and use approved material where possible.
+- **Children's privacy:** minimize collected data and review
+  applicable requirements before launch.
+- **API costs or abuse:** set usage limits and rate limits.
+- **Prompt injection:** treat uploaded text and model output as
+  untrusted; never execute generated code.
+- **Over-reliance on AI:** encourage students to reason and practise,
+  not simply copy answers.
 
 ## 13. Current Status
 
@@ -222,3 +221,182 @@ The dashboard uses illustrative data; student accounts, saved progress,
 AI-generated quizzes, and AI-based answer evaluation are not implemented.
 See the README for the current route behavior and development checks. Treat
 all preview data as sample data, not as a real student's record.
+
+# Punjab Public High School — Project Documentation
+
+## 1. Project Overview
+
+**Project Name:** Punjab Public High School Website  
+**Website Type:** Modern, responsive school website  
+**Education Level:** Playgroup to Class 10 (Matric)  
+**Framework:** Next.js App Router  
+**Language:** JavaScript + JSX  
+**Styling:** Existing styling system or Tailwind CSS, based on the current project  
+**Primary Goal:** Present the school professionally, build trust with parents, showcase teachers and student achievements, and make admission enquiries easy.
+
+## 2. Design Vision
+
+Build a premium, modern educational website with a welcoming, trustworthy, academic identity.
+
+### Design System
+
+- Primary color: Deep navy blue `#102A43`
+- Secondary color: Royal blue `#2457A7`
+- Accent color: Warm gold `#D6A84F`
+- Background: Soft white `#FFFFFF`
+- Alternate background: Light blue-gray `#F3F6FA`
+- Text: Dark slate `#243447`
+- Border: Soft gray `#E2E8F0`
+
+Use consistent typography, generous spacing, rounded cards, subtle shadows, refined borders, and smooth transitions. Avoid excessive gradients, flashy effects, and generic AI-generated layouts.
+
+## 3. Website Pages
+
+### Home — `/`
+
+- Responsive navigation and school logo.
+- Hero section with the heading: “From First Steps to Matric Success.”
+- Supporting text highlighting education from Playgroup to Class 10.
+- Primary CTA: “Enquire About Admissions.”
+- Secondary CTA: “Explore Our School.”
+- School introduction and educational stages.
+- Why Choose Us section.
+- Academic programme cards.
+- Teacher and leadership preview.
+- Student achievement preview.
+- School gallery preview.
+- Parent enquiry CTA.
+- Complete footer with navigation and verified contact details.
+
+### About Us — `/about`
+
+- School introduction and educational mission.
+- Vision, values, discipline, and student development.
+- Leadership cards:
+  - Abdul Qadeer — Director, M.Sc. Chemistry.
+  - Shabir — Sub-Director, M.Sc. Botany.
+  - Nasir — Principal, English Teacher.
+- Teaching staff cards:
+  - Ajiba Rasool — designation to be confirmed.
+  - Shabir Ahmed — Urdu Teacher.
+  - Habib ur Rehman — Pakistan Studies Teacher.
+  - Mufti Umer — Islamic Studies / Tarjuma Teacher.
+  - Mufti Abdul Hameed — Islamic Studies / Tarjuma Teacher.
+  - Ansar Shehzad — Computer Teacher, M.S. IT.
+- Class 9 achievement section:
+  - 1st: Zain ul Abedain.
+  - 2nd: Subhan Irfan.
+  - 3rd: Farhan.
+- Use verified photographs when available; otherwise use initials-based avatars.
+- Keep staff roles and student results easy to update.
+
+### Academics — `/academics`
+
+- Early Years: Playgroup, Nursery, Kindergarten.
+- Primary Education: Classes 1–5.
+- Middle Education: Classes 6–8.
+- Secondary Education: Classes 9–10.
+- Explain learning objectives and academic progression.
+- Use clear cards, subject highlights, and age-appropriate descriptions.
+- Do not advertise unverified programmes or facilities.
+
+### Admissions — `/admissions`
+
+- Admission information for Playgroup through Class 10.
+- General enquiry form with parent name, contact number, desired class, and message.
+- Form validation and success/error feedback.
+- Explain that submitting an enquiry does not automatically confirm admission.
+- Add verified admission requirements and dates only when supplied by the school.
+- Connect the form to a backend only if the project supports it; otherwise clearly label it as a demo.
+
+### Results & Achievements — `/results`
+
+- Class-wise academic achievement sections.
+- Class 9 position holders.
+- Editable achievement data.
+- Display examination year and marks only when verified.
+- Avoid fabricated board affiliations, results, statistics, or awards.
+
+### Gallery — `/gallery`
+
+- Responsive image grid.
+- Optional category filters.
+- Lightbox or accessible image preview.
+- Real school photographs only.
+- Use placeholders until genuine photographs are provided.
+
+### Contact Us — `/contact`
+
+- Verified school address, phone number, email, and opening hours.
+- Contact form with validation.
+- Optional map integration if the exact school location is provided.
+- WhatsApp contact link only when a verified number is supplied.
+- Friendly confirmation and error states.
+
+## 4. Interactive Features
+
+- Sticky navigation with mobile menu.
+- Active navigation states.
+- Smooth scrolling where appropriate.
+- Subtle reveal-on-scroll animations.
+- Hover effects on cards and buttons.
+- Accessible gallery previews.
+- Form validation and clear feedback.
+- Clickable telephone, email, and WhatsApp links when verified.
+- Reduced-motion support.
+- Loading, empty, and error states where applicable.
+
+Interactions must be functional, not merely decorative.
+
+## 5. Responsive Requirements
+
+Support mobile phones, tablets, laptops, and large desktop screens.
+
+- Mobile-first layouts.
+- No horizontal overflow.
+- Touch-friendly buttons.
+- Responsive grids and images.
+- Readable text at all sizes.
+- Navigation must remain usable on small screens.
+
+## 6. SEO and Accessibility
+
+- Unique page title and meta description for every page.
+- Semantic HTML and logical heading hierarchy.
+- Descriptive image alt text.
+- Keyboard navigation and visible focus indicators.
+- Accessible forms and sufficient color contrast.
+- Open Graph metadata where appropriate.
+- Sitemap and robots configuration where appropriate.
+- Optimize images, fonts, JavaScript, and page loading.
+
+## 7. Content Rules
+
+- The school serves Playgroup through Class 10 only.
+- Do not mention college, intermediate, or university programmes.
+- Do not invent school history, awards, teacher qualifications, fees, facilities, contact details, or admission dates.
+- Treat the supplied teacher and topper details as editable draft content until verified.
+- Preserve correct spelling of staff and student names.
+- Use genuine school branding and photographs when available.
+
+## 8. Technical Requirements
+
+- Use Next.js App Router and JavaScript/JSX.
+- Reuse shared components and existing project conventions.
+- Keep navigation, footer, buttons, typography, spacing, and colors consistent.
+- Store repeated staff, academic, and achievement content in reusable JavaScript data files.
+- Use reusable components for cards, sections, forms, and page layouts.
+- Do not introduce TypeScript.
+- Do not replace the entire project or remove working functionality without a reason.
+- Avoid unnecessary packages and animations that harm performance.
+
+## 9. Definition of Done
+
+- Every navigation link leads to the correct page.
+- All pages use the same design system.
+- Mobile and desktop layouts work correctly.
+- Forms validate input and provide clear feedback.
+- No fabricated school information appears.
+- No broken images, links, or console errors remain.
+- Lint and production build pass using the project's existing setup.
+- The website is ready for school review before publication.

@@ -1,6 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./home.css";
 import AuthProvider from "@/components/AuthProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,11 +17,11 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: {
-    default: "LearnMate AI | Learn step by step",
-    template: "%s | LearnMate AI",
+    default: "Punjab Public High School | Playgroup to Matric",
+    template: "%s | Punjab Public High School",
   },
   description:
-    "A patient AI learning assistant for step-by-step explanations and practice.",
+    "A premium educational institution in Punjab, providing quality education from Playgroup to Class 10 (Matric).",
 };
 
 export default function RootLayout({ children }) {
@@ -29,7 +32,9 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <AuthProvider>
-          {children}
+          <Navbar />
+          <main className="`flex-grow">{children}</main>
+          <Footer />
         </AuthProvider>
       </body>
     </html>

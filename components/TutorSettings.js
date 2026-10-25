@@ -25,13 +25,19 @@ export default function TutorSettings({ subject, setSubject, grade, setGrade, la
           onChange={(event) => setGrade(event.target.value)}
           aria-label="Choose grade"
         >
-          <option>Grade 6</option>
-          <option>Grade 7</option>
-          <option>Grade 8</option>
-          <option>Grade 9</option>
-          <option>Grade 10</option>
-          <option>Grade 11</option>
-          <option>Grade 12</option>
+          <option>Playgroup</option>
+          <option>Nursery</option>
+          <option>KG</option>
+          <option>Class 1</option>
+          <option>Class 2</option>
+          <option>Class 3</option>
+          <option>Class 4</option>
+          <option>Class 5</option>
+          <option>Class 6</option>
+          <option>Class 7</option>
+          <option>Class 8</option>
+          <option>Class 9</option>
+          <option>Class 10</option>
         </select>
         <span className="select-caret">⌄</span>
       </label>

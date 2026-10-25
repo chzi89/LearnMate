@@ -1,7 +1,10 @@
 import Link from "next/link";
+import AcademicLevels from "@/components/AcademicLevels";
 import "./home.css";
 
 const steps = [
+// ... existing steps content ...
+
   {
     number: "01",
     title: "Choose what you are learning",
@@ -64,10 +67,13 @@ export default function Home() {
               then <span>make it stick.</span>
             </h1>
             <p className="home-intro">
+              Punjab Public High School provides a premium educational journey from 
+              <span className="text-blue-900 font-semibold"> Playgroup to Matric</span>. 
               Ask a question, choose your learning level, and work through ideas
               with a patient tutor. Practise at your own pace in English or
               Roman Urdu.
             </p>
+
 
             <div className="home-hero-actions">
               <Link className="home-button" href="/learn">
@@ -155,7 +161,10 @@ export default function Home() {
         </div>
       </section>
 
+      <AcademicLevels />
+
       <section className="home-method" aria-labelledby="home-method-title">
+
         <div className="home-section-heading">
           <p className="home-section-kicker">A SIMPLE LEARNING LOOP</p>
           <h2 id="home-method-title">Small steps. <span>Real understanding.</span></h2>

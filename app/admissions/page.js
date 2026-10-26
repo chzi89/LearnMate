@@ -52,10 +52,18 @@ export default function AdmissionsPage() {
                 Required Documents
               </h3>
               <ul className="text-sm text-amber-700 space-y-2">
-                <li>• Birth Certificate</li>
-                <li>• Previous School Record</li>
-                <li>• Passport Photos (2)</li>
-                <li>• Parent CNIC Copy</li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-400">•</span> Birth Certificate
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-400">•</span> Previous School Record
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-400">•</span> Passport Photos (2)
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-400">•</span> Parent CNIC Copy
+                </li>
               </ul>
             </div>
           </div>

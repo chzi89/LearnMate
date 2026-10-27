@@ -9,7 +9,7 @@ async function runTest() {
     password: 'Password123!',
     confirmPassword: 'Password123!',
     grade: 'Grade 9',
-    interests: 'Math, Science'
+    interests: ['Math', 'Science']
   };
 
   const cookieJar = {};
@@ -67,15 +67,19 @@ async function runTest() {
     console.log('Testing Quiz Fetch...');
     const quizRes = await request('/api/entry-quiz');
     console.log(`Quiz Fetch Status: ${quizRes.status} ${quizRes.status === 200 ? '✅' : '❌'}`);
-    if (quizRes.status === 200) {
-      console.log(`Questions received: ${quizRes.data.questions.length}`);
+    
+    if (quizRes.status !== 200 || !quizRes.data || !quizRes.data.questions) {
+      console.error('❌ Failed to fetch quiz or response format is invalid. Skipping quiz submission.');
+      return;
     }
+    
+    console.log(`Questions received: ${quizRes.data.questions.length}`);
 
     // 4. Submit Quiz
     console.log('Testing Quiz Submission...');
     const answers = {};
     quizRes.data.questions.forEach(q => {
-      answers[q.id] = q.o[0]; // Pick first option for all
+      answers[q.id] = q.o ? q.o[0] : 'Default Answer'; // Pick first option for all
     });
 
     const submitRes = await request('/api/entry-quiz/submit', {

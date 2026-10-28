@@ -135,6 +135,18 @@
   line-height: 1.5;
 }
 
+.contact-card a {
+  color: var(--pphs-navy);
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.contact-card a:hover {
+  color: var(--pphs-royal);
+  text-decoration: underline;
+}
+
 .contact-main-section {
   display: grid;
   grid-template-columns: 1fr 1fr;

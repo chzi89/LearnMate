@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { schoolData } from "@/lib/school-data";
 import "./contact.css";
 
 export default function ContactPage() {
@@ -75,6 +76,10 @@ export default function ContactPage() {
 
   const [openFaq, setOpenFaq] = useState(null);
 
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    schoolData.contact.mapQuery,
+  )}`;
+
   const faqs = [
     {
       q: "What classes are offered at Punjab Public High School?",
@@ -86,11 +91,11 @@ export default function ContactPage() {
     },
     {
       q: "What documents are required for registration?",
-      a: "Typically, a birth certificate, previous school leaving certificate (if applicable), and passport-sized photographs are required. Please contact us for a detailed list.",
+      a: "Please contact the school office for the current document checklist for your child's class. The office will confirm exactly what to bring when you enquire.",
     },
     {
       q: "What are the school timings?",
-      a: "Our standard school hours are from 8:00 AM to 2:00 PM, Monday through Friday. Please contact the office to confirm specific timings for different grade levels.",
+      a: `Please contact the school office on ${schoolData.contact.phone} to confirm the current timings for each grade level.`,
     },
   ];
 
@@ -114,22 +119,30 @@ export default function ContactPage() {
         <div className="contact-card">
           <div className="icon-box">📍</div>
           <h3>Visit Our School</h3>
-          <p>[Complete Physical Address Placeholder]<br />City, Region, Pakistan</p>
+          <p>{schoolData.contact.address}</p>
         </div>
         <div className="contact-card">
           <div className="icon-box">📞</div>
           <h3>Call Us</h3>
-          <p>[Official Phone Number Placeholder]<br />Available Mon-Fri</p>
+          <p>
+            <a href={`tel:${schoolData.contact.phoneInternational}`}>
+              {schoolData.contact.phone}
+            </a>
+          </p>
         </div>
         <div className="contact-card">
           <div className="icon-box">✉️</div>
           <h3>Email Us</h3>
-          <p>[Official School Email Placeholder]<br />info@pphs.edu.pk</p>
+          <p className="break-all">
+            <a href={`mailto:${schoolData.contact.email}`}>
+              {schoolData.contact.email}
+            </a>
+          </p>
         </div>
         <div className="contact-card">
           <div className="icon-box">⏰</div>
           <h3>School Hours</h3>
-          <p>Monday — Friday: 8:00 AM - 2:00 PM<br />Saturday: Closed</p>
+          <p>Please contact the school office to confirm current timings.</p>
         </div>
       </div>
 
@@ -249,18 +262,51 @@ export default function ContactPage() {
         <div className="contact-side-panel">
           <div className="location-card">
             <h3>Our Location</h3>
-            <div className="map-placeholder">
-              Map view will be available once the verified school address is provided.
-            </div>
-            <p className="text-center text-slate-600 italic">
-              Note: Google Maps integration will be enabled upon address verification.
-            </p>
+            <iframe
+              src={`https://www.google.com/maps?q=${encodeURIComponent(
+                schoolData.contact.mapQuery,
+              )}&output=embed`}
+              title="Map showing Punjab Public High School, Shaheenabad"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{
+                width: "100%",
+                height: 230,
+                border: 0,
+                borderRadius: 16,
+                marginBottom: "1.25rem",
+              }}
+            />
+            <p style={{ marginBottom: "1.25rem" }}>{schoolData.contact.address}</p>
+            <a
+              href={mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-btn"
+              style={{ display: "block", textAlign: "center" }}
+            >
+              Open in Google Maps
+            </a>
           </div>
 
           <div className="location-card" style={{ background: 'var(--pphs-navy)', color: 'white' }}>
             <h3 style={{ color: 'var(--pphs-gold)' }}>Need Quick Help?</h3>
             <p style={{ color: '#cbd5e1', marginBottom: '1.5rem' }}>
-              Our administrative office is open from 8 AM to 2 PM. Visit us for immediate assistance.
+              Call our administrative office at{" "}
+              <a
+                href={`tel:${schoolData.contact.phoneInternational}`}
+                style={{ color: 'var(--pphs-gold)', fontWeight: 600 }}
+              >
+                {schoolData.contact.phone}
+              </a>{" "}
+              or email us at{" "}
+              <a
+                href={`mailto:${schoolData.contact.email}`}
+                style={{ color: 'var(--pphs-gold)', fontWeight: 600, wordBreak: 'break-all' }}
+              >
+                {schoolData.contact.email}
+              </a>
+              . Visit us at {schoolData.contact.address} for immediate assistance.
             </p>
             <Link href="/admissions" className="cta-btn" style={{ backgroundColor: 'var(--pphs-gold)', color: 'var(--pphs-navy)' }}>
               Explore Admissions

@@ -22,6 +22,11 @@ export const metadata = {
   },
   description:
     "A premium educational institution in Punjab, providing quality education from Playgroup to Class 10 (Matric).",
+  icons: {
+    icon: "/school-logo.jpeg",
+    shortcut: "/school-logo.jpeg",
+    apple: "/school-logo.jpeg",
+  },
 };
 
 export default function RootLayout({ children }) {

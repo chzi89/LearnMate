@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { schoolData } from "@/lib/school-data";
 
 export default function Footer() {
   return (
@@ -6,10 +8,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         {/* Brand Column */}
         <div className="col-span-1 md:col-span-1">
-          <Link href="/" className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-pphs-gold rounded-lg flex items-center justify-center text-pphs-navy font-bold text-xl">
-              P
-            </div>
+          <Link href="/" className="flex items-center gap-3 mb-6" aria-label="Punjab Public High School — Home">
+            <Image
+              src="/school-logo.jpeg"
+              alt="Punjab Public High School crest"
+              width={44}
+              height={44}
+              className="h-11 w-11 rounded-lg bg-white object-contain p-1"
+            />
             <div className="flex flex-col leading-tight">
               <span className="font-bold text-lg">Punjab Public</span>
               <span className="text-xs font-semibold tracking-widest uppercase text-amber-400">
@@ -40,15 +46,25 @@ export default function Footer() {
           <ul className="space-y-4 text-slate-400 text-sm">
             <li className="flex items-start gap-3">
               <span className="text-pphs-gold">📍</span>
-              <span>Verified Address Pending Review</span>
+              <span>{schoolData.contact.address}</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-pphs-gold">📞</span>
-              <span>Contact Number Pending Review</span>
+              <a
+                href={`tel:${schoolData.contact.phoneInternational}`}
+                className="hover:text-pphs-gold transition-colors"
+              >
+                {schoolData.contact.phone}
+              </a>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-pphs-gold">✉️</span>
-              <span>Email Pending Review</span>
+              <a
+                href={`mailto:${schoolData.contact.email}`}
+                className="hover:text-pphs-gold transition-colors break-all"
+              >
+                {schoolData.contact.email}
+              </a>
             </li>
           </ul>
         </div>

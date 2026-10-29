@@ -5,7 +5,7 @@ import { schoolData } from "@/lib/school-data";
 export default function Footer() {
   return (
     <footer className="bg-pphs-navy text-white pt-16 pb-8 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         {/* Brand Column */}
         <div className="col-span-1 md:col-span-1">
           <Link href="/" className="flex items-center gap-3 mb-6" aria-label="Punjab Public High School — Home">
@@ -86,12 +86,11 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
         <p className="text-slate-500 text-xs">
-          © {typeof window !== "undefined" ? new Date().getFullYear() : "2026"} Punjab Public High School. All rights reserved.
+          © Punjab Public High School. All rights reserved.
         </p>
         <div className="flex gap-6 text-slate-500 text-xs">
-
-          <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+          <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
+          <Link href="/admissions" className="hover:text-white transition-colors">Admissions</Link>
         </div>
       </div>
     </footer>

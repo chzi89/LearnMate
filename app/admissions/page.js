@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
+import { schoolData } from "@/lib/school-data";
 
 export default function AdmissionsPage() {
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
@@ -51,20 +51,16 @@ export default function AdmissionsPage() {
               <h3 className="font-bold text-amber-800 mb-2">
                 Required Documents
               </h3>
-              <ul className="text-sm text-amber-700 space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-400">•</span> Birth Certificate
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-400">•</span> Previous School Record
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-400">•</span> Passport Photos (2)
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-400">•</span> Parent CNIC Copy
-                </li>
-              </ul>
+              <p className="text-sm text-amber-700 leading-relaxed">
+                Please contact the school office at{" "}
+                <a
+                  href={`tel:${schoolData.contact.phoneInternational}`}
+                  className="font-semibold underline"
+                >
+                  {schoolData.contact.phone}
+                </a>{" "}
+                for the current document checklist before your visit.
+              </p>
             </div>
           </div>
 
@@ -76,11 +72,26 @@ export default function AdmissionsPage() {
                   ✓
                 </div>
                 <h3 className="text-2xl font-bold text-pphs-navy mb-2">
-                  Enquiry Sent!
+                  Demo Enquiry Submitted
                 </h3>
                 <p className="text-slate-600 mb-8">
-                  Thank you for your interest. Our admissions office will
-                  contact you shortly.
+                  This demo form does not send messages yet, so nothing was
+                  emailed to the school. To reach the admissions office now,
+                  call{" "}
+                  <a
+                    href={`tel:${schoolData.contact.phoneInternational}`}
+                    className="font-semibold text-pphs-navy underline"
+                  >
+                    {schoolData.contact.phone}
+                  </a>{" "}
+                  or email{" "}
+                  <a
+                    href={`mailto:${schoolData.contact.email}`}
+                    className="font-semibold text-pphs-navy underline break-all"
+                  >
+                    {schoolData.contact.email}
+                  </a>
+                  .
                 </p>
                 <button
                   onClick={() => setStatus("idle")}

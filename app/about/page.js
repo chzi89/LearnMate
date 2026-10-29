@@ -39,7 +39,7 @@ export default function AboutPage() {
             <div className="aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
               <img 
                 src="/api/placeholder/800/600" 
-                alt="Punjab Public High School Campus" 
+                alt="Illustrative placeholder image of the school campus" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -169,7 +169,7 @@ export default function AboutPage() {
                 key={idx}
                 className={`relative p-8 rounded-3xl text-center transition-all duration-300 ${
                   isFirst
-                    ? "bg-white border-2 border-amber-400 shadow-xl scale-110 z-10"
+                    ? "bg-white border-2 border-amber-400 shadow-xl md:scale-110 z-10"
                     : "bg-white border border-slate-100 shadow-sm"
                 }`}
               >

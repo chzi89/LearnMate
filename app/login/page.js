@@ -82,8 +82,8 @@ export default function LoginPage() {
           </div>
 
           <div className="flex items-center justify-between text-sm">
-            <Link href="/forgot-password" className="text-indigo-600 font-semibold hover:underline">
-              Forgot password?
+            <Link href="/contact" className="text-indigo-600 font-semibold hover:underline">
+              Need help signing in?
             </Link>
           </div>
 
@@ -97,7 +97,7 @@ export default function LoginPage() {
         </form>
 
         <div className="mt-8 text-center text-sm text-slate-500">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/register" className="text-indigo-600 font-semibold hover:underline">
             Create account
           </Link>

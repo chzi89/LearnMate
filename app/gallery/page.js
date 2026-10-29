@@ -67,6 +67,10 @@ export default function GalleryPage() {
 
       {/* Filter Bar */}
       <section className="py-12 px-6 max-w-7xl mx-auto">
+        <p className="mb-8 text-center text-sm text-slate-500">
+          Illustrative placeholders are shown until genuine school photographs
+          are supplied.
+        </p>
         <div className="flex flex-wrap justify-center gap-3">
           {categories.map((cat) => (
             <button
@@ -95,7 +99,7 @@ export default function GalleryPage() {
                 alt={photo.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 `bg-gradient-to-t from-pphs-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-pphs-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                 <p className="text-white font-bold text-lg">{photo.title}</p>
               </div>
             </div>

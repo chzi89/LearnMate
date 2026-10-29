@@ -107,7 +107,7 @@ export default function ContactPage() {
         <h1>We’re Here to Help Your Child Succeed</h1>
         <p>
           Whether you have a question about admissions, academics, or just want to
-          learn more about our community, we'd love to hear from you.
+          learn more about our community, we&apos;d love to hear from you.
         </p>
         <div className="contact-breadcrumbs">
           <Link href="/">Home</Link> / <span>Contact Us</span>
@@ -320,7 +320,7 @@ export default function ContactPage() {
         <div className="faq-grid">
           <div className="faq-content">
             <h2>Common Questions</h2>
-            <p>Find quick answers to frequently asked questions. If you can't find what you're looking for, feel free to use the contact form.</p>
+            <p>Find quick answers to frequently asked questions. If you can&apos;t find what you&apos;re looking for, feel free to use the contact form.</p>
           </div>
           <div className="faq-list">
             {faqs.map((faq, index) => (

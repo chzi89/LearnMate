@@ -7,6 +7,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  color-scheme: light;
 
   /* Punjab Public High School Brand Palette */
   --pphs-navy: #0a192f;
@@ -34,19 +35,23 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Form fields: readable placeholder text across desktop, tablet, and mobile. */
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+input,
+select,
+textarea {
+  color: #0f172a;
 }
 
 /* 

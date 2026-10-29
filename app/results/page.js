@@ -40,7 +40,7 @@ export default function ResultsPage() {
                 key={idx} 
                 className={`relative p-8 rounded-3xl text-center transition-all duration-300 ${
                   isFirst 
-                    ? "bg-white border-2 border-amber-400 shadow-xl scale-110 z-10" 
+                    ? "bg-white border-2 border-amber-400 shadow-xl md:scale-110 z-10" 
                     : "bg-white border border-slate-100 shadow-sm"
                 }`}
               >
@@ -74,7 +74,7 @@ export default function ResultsPage() {
             href="/admissions" 
             className="bg-pphs-navy text-white px-8 py-3 rounded-full font-bold hover:bg-pphs-gold hover:text-pphs-navy transition-all"
           >
-            Secure Your Child's Future
+            Secure Your Child&apos;s Future
           </Link>
         </div>
       </section>

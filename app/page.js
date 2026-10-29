@@ -3,12 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import AcademicLevels from "@/components/AcademicLevels";
+import { schoolData } from "@/lib/school-data";
 
 const features = [
   {
     title: "Quality Education",
     description:
-      "A rigorous academic curriculum aligned with board standards to ensure student success.",
+      "A structured academic programme that builds strong foundations at every stage.",
     icon: "⭐",
   },
   {
@@ -18,15 +19,15 @@ const features = [
     icon: "🛡️",
   },
   {
-    title: "Expert Faculty",
+    title: "Dedicated Teachers",
     description:
-      "Dedicated teachers with advanced degrees and a passion for pedagogical excellence.",
+      "Caring teachers who guide students through each stage of their learning.",
     icon: "👨‍🏫",
   },
   {
-    title: "Modern Facilities",
+    title: "Supportive Environment",
     description:
-      "Providing a safe, clean, and resource-rich environment for optimal learning.",
+      "A welcoming school community where students feel encouraged to learn and grow.",
     icon: "🏫",
   },
 ];
@@ -51,7 +52,7 @@ export default function Home() {
             <p className="text-amber-400 font-semibold tracking-widest uppercase text-sm mb-4">
               Welcome to Punjab Public High School
             </p>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               From First Steps <br />
               <span className="text-pphs-gold">to Matric Success</span>
             </h1>
@@ -61,18 +62,24 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
               <Link
-                href="/learn"
+                href="/admissions"
                 className="bg-pphs-gold text-pphs-navy font-bold px-10 py-4 rounded-full hover:bg-white transition-all shadow-lg focus:ring-4 focus:ring-amber-300 outline-none"
               >
-                Learning
+                Enquire About Admissions
               </Link>
               <Link
                 href="/about"
                 className="bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-pphs-navy transition-all focus:ring-4 focus:ring-blue-400 outline-none"
               >
-                Explore School
+                Explore Our School
               </Link>
             </div>
+            <p className="mt-5 text-sm text-blue-100">
+              Want to try the study assistant?{" "}
+              <Link href="/learn" className="font-semibold text-amber-300 underline underline-offset-4 hover:text-white transition-colors">
+                Open the AI tutor
+              </Link>
+            </p>
           </div>
           <div className="hidden lg:block relative">
             <div className="w-full aspect-square bg-blue-800/30 rounded-3xl border-2 border-pphs-gold/30 flex items-center justify-center relative">
@@ -95,7 +102,7 @@ export default function Home() {
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto text-lg">
             A structured progression designed to nurture growth at every stage
-            of a child's development.
+            of a child&apos;s development.
           </p>
         </div>
         <AcademicLevels />
@@ -132,19 +139,153 @@ export default function Home() {
               <div className="aspect-square bg-slate-200 rounded-3xl overflow-hidden">
                 <img
                   src="/api/placeholder/400/400"
-                  alt="School Life"
+                  alt="Illustrative placeholder image of school life"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="aspect-square bg-slate-200 rounded-3xl overflow-hidden translate-y-8">
                 <img
                   src="/api/placeholder/400/400"
-                  alt="Student Success"
+                  alt="Illustrative placeholder image of student success"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Leadership & Faculty Preview */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-amber-600 font-bold tracking-widest uppercase text-xs mb-2">
+              Our People
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-pphs-navy mb-4">
+              School Leadership
+            </h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              The team guiding Punjab Public High School from Playgroup to
+              Matric.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {schoolData.leadership.map((leader) => (
+              <div
+                key={leader.name}
+                className="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow text-center"
+              >
+                <div className="w-16 h-16 rounded-full bg-pphs-navy text-pphs-gold mx-auto mb-4 flex items-center justify-center text-xl font-bold">
+                  {leader.name.split(" ").map((part) => part[0]).join("")}
+                </div>
+                <h3 className="font-bold text-pphs-navy">{leader.name}</h3>
+                <p className="text-sm text-blue-900 font-medium">
+                  {leader.role}
+                </p>
+                <p className="text-xs text-slate-500 mt-1">
+                  {leader.qualification}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/about"
+              className="text-pphs-navy font-bold underline decoration-amber-400 decoration-2 underline-offset-4 hover:text-amber-600 transition-colors"
+            >
+              Meet our teachers
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Achievements Preview */}
+      <section className="py-16 px-6 bg-pphs-navy text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-amber-400 font-bold tracking-widest uppercase text-xs mb-2">
+              {schoolData.achievers.board} — {schoolData.achievers.grade}
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
+              Celebrating Our Achievers
+            </h2>
+            <p className="text-blue-100 max-w-2xl mx-auto">
+              Recognising the top position holders who have set a benchmark of
+              success.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {schoolData.achievers.students.map((student) => (
+              <div
+                key={student.name}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center"
+              >
+                <span className="inline-block mb-3 rounded-full bg-amber-400 px-3 py-1 text-xs font-bold uppercase text-pphs-navy">
+                  {student.position} Position
+                </span>
+                <p className="text-lg font-bold">{student.name}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/results"
+              className="inline-block rounded-full border-2 border-amber-400 px-6 py-3 text-sm font-bold text-amber-300 hover:bg-amber-400 hover:text-pphs-navy transition-colors"
+            >
+              View all results
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Preview */}
+      <section className="py-20 px-6 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+            <div>
+              <p className="text-amber-600 font-bold tracking-widest uppercase text-xs mb-2">
+                School Life
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-pphs-navy">
+                Inside Our School
+              </h2>
+            </div>
+            <Link
+              href="/gallery"
+              className="font-bold text-pphs-navy hover:text-amber-600 transition-colors"
+            >
+              View gallery →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { label: "Campus", size: "600/400" },
+              { label: "Classrooms", size: "600/600" },
+              { label: "Events", size: "400/600" },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                href="/gallery"
+                className="group relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-200"
+              >
+                <img
+                  src={`/api/placeholder/${item.size}`}
+                  alt={`Illustrative placeholder for the school ${item.label.toLowerCase()}`}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute bottom-4 left-4 rounded-full bg-pphs-navy/85 px-4 py-1.5 text-xs font-semibold text-white">
+                  {item.label}
+                </span>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-xs text-slate-500">
+            Illustrative placeholders are shown until genuine school photographs
+            are supplied.
+          </p>
         </div>
       </section>
 

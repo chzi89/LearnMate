@@ -59,7 +59,7 @@ export default function AcademicLevels() {
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto text-lg">
             Punjab Public High School provides a structured educational journey, 
-            tailored to every developmental stage of a student's growth.
+            tailored to every developmental stage of a student&apos;s growth.
           </p>
         </div>
 

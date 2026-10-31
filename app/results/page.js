@@ -49,13 +49,26 @@ export default function ResultsPage() {
                     Top Position
                   </div>
                 )}
-                <div className={`w-24 h-24 ${isFirst ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-400'} rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold`}>
-                  {student.name.split(" ").map(n => n[0]).join("")}
+                <div className={`w-24 h-24 ${isFirst ? 'bg-amber-100 text-amber-600' : 'bg-slate-100 text-slate-400'} rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden text-3xl font-bold`}>
+                  {student.image ? (
+                    <img
+                      src={student.image}
+                      alt={`${student.name}, ${schoolData.achievers.grade} ${student.position} position holder`}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    student.name.split(" ").map((part) => part[0]).join("")
+                  )}
                 </div>
                 <p className={`text-sm font-bold uppercase tracking-wider mb-2 ${isFirst ? 'text-amber-600' : 'text-slate-400'}`}>
                   {student.position} Position
                 </p>
                 <h3 className="text-2xl font-bold text-pphs-navy">{student.name}</h3>
+                {typeof student.percentage === "number" && (
+                  <p className="mt-2 text-sm font-semibold text-slate-600">
+                    {student.percentage.toFixed(2)}%
+                  </p>
+                )}
               </div>
             );
           })}

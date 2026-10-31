@@ -210,13 +210,17 @@ export default function AboutPage() {
                   </div>
                 )}
                 <div
-                  className={`w-20 h-20 ${isFirst ? "bg-amber-100 text-amber-600" : "bg-slate-100 text-slate-400"} rounded-full mx-auto mb-6 flex items-center justify-center text-2xl font-bold`}
+                  className={`w-20 h-20 ${isFirst ? "bg-amber-100 text-amber-600" : "bg-slate-100 text-slate-400"} rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden text-2xl font-bold`}
                 >
-                  <img
-                    src={student.image}
-                    alt={student.name}
-                    className="w-full h-full object-cover rounded-full"
-                  />
+                  {student.image ? (
+                    <img
+                      src={student.image}
+                      alt={`${student.name}, ${schoolData.achievers.grade} ${student.position} position holder`}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    student.name.split(" ").map((part) => part[0]).join("")
+                  )}
                 </div>
                 <p
                   className={`text-sm font-bold uppercase tracking-wider mb-2 ${isFirst ? "text-amber-600" : "text-slate-400"}`}
@@ -226,9 +230,11 @@ export default function AboutPage() {
                 <h3 className="text-xl font-bold text-slate-900">
                   {student.name}
                 </h3>
-                <p className="text-slate-600 text-sm mt-1">
-                  Percentage: {student.Percentage.toFixed(2)}%
-                </p>
+                {typeof student.percentage === "number" && (
+                  <p className="text-slate-600 text-sm mt-1">
+                    Percentage: {student.percentage.toFixed(2)}%
+                  </p>
+                )}
               </div>
             );
           })}

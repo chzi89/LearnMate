@@ -1,0 +1,11 @@
+let cmarks = 545;
+let bmarks = 555;
+let cabtiend = 506;
+let babtained = 510;
+let babtained2 = 514;
+let cpercent = (cabtiend / cmarks) * 100;
+let bpercent = (babtained / bmarks) * 100;
+let bpercent2 = (babtained2 / bmarks) * 100;
+console.log("C Percentage: " + cpercent.toFixed(2) + "%");
+console.log("B Percentage: " + bpercent.toFixed(2) + "%");
+console.log("B Percentage 2: " + bpercent2.toFixed(2) + "%");

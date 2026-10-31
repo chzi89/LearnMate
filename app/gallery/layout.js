@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Gallery",
   description:
-    "A look at school life, classrooms, and events at Punjab Public High School, Shaheenabad. Placeholder images are shown until genuine school photographs are supplied.",
+    "Photographs from school events, educational trips, and Hifz classes at Punjab Public High School, Shaheenabad.",
 };
 
 export default function GalleryLayout({ children }) {

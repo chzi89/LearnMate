@@ -45,8 +45,8 @@ export default function AboutPage() {
           <div className="relative">
             <div className="aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
               <img
-                src="/api/placeholder/800/600"
-                alt="Illustrative placeholder image of the school campus"
+                src="/hifz-class.jpg"
+                alt="Students of Punjab Public High School at a Hifz class assembly"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -126,11 +126,19 @@ export default function AboutPage() {
               key={idx}
               className="group p-8 rounded-3xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-all text-center"
             >
-              <div className="w-24 h-24 bg-slate-100 text-slate-400 rounded-full mx-auto mb-6 flex items-center justify-center text-3xl font-bold group-hover:bg-pphs-navy group-hover:text-white transition-colors duration-300">
-                {leader.name
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
+              <div className="w-24 h-24 bg-slate-100 text-slate-400 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden text-3xl font-bold group-hover:bg-pphs-navy group-hover:text-white transition-colors duration-300">
+                {leader.image ? (
+                  <img
+                    src={leader.image}
+                    alt={`${leader.name}, ${leader.role}`}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  leader.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")
+                )}
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-1">
                 {leader.name}
@@ -157,11 +165,19 @@ export default function AboutPage() {
                 key={idx}
                 className="flex items-center p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-amber-200 transition-all group"
               >
-                <div className="w-12 h-12 bg-slate-100 text-slate-500 rounded-full mr-4 flex items-center justify-center font-semibold text-sm group-hover:bg-amber-50 group-hover:text-amber-600 transition-colors">
-                  {member.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
+                <div className="w-12 h-12 bg-slate-100 text-slate-500 rounded-full mr-4 flex items-center justify-center overflow-hidden font-semibold text-sm group-hover:bg-amber-50 group-hover:text-amber-600 transition-colors">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={`${member.name}, ${member.role}`}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    member.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")
+                  )}
                 </div>
                 <div>
                   <h4 className="font-bold text-slate-900">{member.name}</h4>

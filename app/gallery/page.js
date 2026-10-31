@@ -5,45 +5,50 @@ import React, { useState } from "react";
 export default function GalleryPage() {
   const [filter, setFilter] = useState("all");
 
-  const categories = ["all", "campus", "classrooms", "events", "sports"];
+  const categories = ["all", "events", "trips", "hifz"];
 
-  // Placeholder for genuine photos. In production, these would be mapped to real image paths.
   const photos = [
     {
       id: 1,
-      category: "campus",
-      title: "Main Building",
-      url: "/api/placeholder/600/400",
+      category: "hifz",
+      title: "Hifz Class",
+      url: "/hifz-class.jpg",
     },
     {
       id: 2,
-      category: "classrooms",
-      title: "Modern Learning Space",
-      url: "/api/placeholder/600/600",
+      category: "hifz",
+      title: "Hifz Ceremony",
+      url: "/hifz.jpg",
     },
     {
       id: 3,
       category: "events",
-      title: "Annual Prize Distribution",
-      url: "/api/placeholder/400/600",
+      title: "Farewell Gathering",
+      url: "/fearwell.jpg",
     },
     {
       id: 4,
-      category: "sports",
-      title: "Inter-School Athletics",
-      url: "/api/placeholder/600/400",
+      category: "trips",
+      title: "Educational Trip",
+      url: "/school-event-1.jpg",
     },
     {
       id: 5,
-      category: "campus",
-      title: "School Library",
-      url: "/api/placeholder/600/600",
+      category: "trips",
+      title: "Visit to the Monument",
+      url: "/school-event-2.jpg",
     },
     {
       id: 6,
-      category: "classrooms",
-      title: "Science Lab",
-      url: "/api/placeholder/600/400",
+      category: "trips",
+      title: "Outdoor Learning Session",
+      url: "/school-event-3.jpg",
+    },
+    {
+      id: 7,
+      category: "trips",
+      title: "Martyrs' Memorial Visit",
+      url: "/school-event-4.jpg",
     },
   ];
 
@@ -68,8 +73,7 @@ export default function GalleryPage() {
       {/* Filter Bar */}
       <section className="py-12 px-6 max-w-7xl mx-auto">
         <p className="mb-8 text-center text-sm text-slate-500">
-          Illustrative placeholders are shown until genuine school photographs
-          are supplied.
+          Photographs from school events, trips, and Hifz classes.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           {categories.map((cat) => (

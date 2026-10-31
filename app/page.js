@@ -82,8 +82,12 @@ export default function Home() {
             </p>
           </div>
           <div className="hidden lg:block relative">
-            <div className="w-full aspect-square bg-blue-800/30 rounded-3xl border-2 border-pphs-gold/30 flex items-center justify-center relative">
-              <span className="text-9xl opacity-20">🎓</span>
+            <div className="w-full aspect-square bg-blue-800/30 rounded-3xl border-2 border-pphs-gold/30 flex items-center justify-center relative overflow-hidden">
+              <img
+                src="/school-event-1.jpg"
+                alt="Students of Punjab Public High School on an educational trip"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
               <div className="absolute -top-6 -right-6 bg-white text-pphs-navy p-6 rounded-2xl shadow-xl">
                 <p className="font-bold text-2xl">Playgroup</p>
                 <p className="text-sm text-slate-500">to</p>
@@ -138,16 +142,16 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               <div className="aspect-square bg-slate-200 rounded-3xl overflow-hidden">
                 <img
-                  src="/api/placeholder/400/400"
-                  alt="Illustrative placeholder image of school life"
+                  src="/hifz-class.jpg"
+                  alt="Students at a Hifz class assembly at Punjab Public High School"
                   loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="aspect-square bg-slate-200 rounded-3xl overflow-hidden translate-y-8">
                 <img
-                  src="/api/placeholder/400/400"
-                  alt="Illustrative placeholder image of student success"
+                  src="/school-event-3.jpg"
+                  alt="Students gathered outdoors during a school learning session"
                   loading="lazy"
                   className="w-full h-full object-cover"
                 />
@@ -178,8 +182,16 @@ export default function Home() {
                 key={leader.name}
                 className="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow text-center"
               >
-                <div className="w-16 h-16 rounded-full bg-pphs-navy text-pphs-gold mx-auto mb-4 flex items-center justify-center text-xl font-bold">
-                  {leader.name.split(" ").map((part) => part[0]).join("")}
+                <div className="w-16 h-16 rounded-full bg-pphs-navy text-pphs-gold mx-auto mb-4 flex items-center justify-center overflow-hidden text-xl font-bold">
+                  {leader.image ? (
+                    <img
+                      src={leader.image}
+                      alt={`${leader.name}, ${leader.role}`}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    leader.name.split(" ").map((part) => part[0]).join("")
+                  )}
                 </div>
                 <h3 className="font-bold text-pphs-navy">{leader.name}</h3>
                 <p className="text-sm text-blue-900 font-medium">
@@ -262,9 +274,21 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { label: "Campus", size: "600/400" },
-              { label: "Classrooms", size: "600/600" },
-              { label: "Events", size: "400/600" },
+              {
+                label: "Educational Trips",
+                src: "/school-event-1.jpg",
+                alt: "Students on an educational trip",
+              },
+              {
+                label: "Events",
+                src: "/fearwell.jpg",
+                alt: "Students and teachers at a farewell gathering",
+              },
+              {
+                label: "Hifz Class",
+                src: "/hifz-class.jpg",
+                alt: "Students at a Hifz class assembly",
+              },
             ].map((item) => (
               <Link
                 key={item.label}
@@ -272,8 +296,8 @@ export default function Home() {
                 className="group relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-200"
               >
                 <img
-                  src={`/api/placeholder/${item.size}`}
-                  alt={`Illustrative placeholder for the school ${item.label.toLowerCase()}`}
+                  src={item.src}
+                  alt={item.alt}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <span className="absolute bottom-4 left-4 rounded-full bg-pphs-navy/85 px-4 py-1.5 text-xs font-semibold text-white">
@@ -282,10 +306,6 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <p className="mt-6 text-center text-xs text-slate-500">
-            Illustrative placeholders are shown until genuine school photographs
-            are supplied.
-          </p>
         </div>
       </section>
 
